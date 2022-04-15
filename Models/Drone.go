@@ -31,8 +31,8 @@ type Drone struct {
 	SerialNumber    string     `json:"serial_number" gorm:"type:varchar(100) not null;unique"`
 	DroneModel      droneModel `json:"model" sql:"drone_model"`
 	DroneState      droneState `json:"state" sql:"droneState"`
-	WeightLimit     float64    `json:"weight_limit"`
-	BatteryCapacity int        `json:"battery_capacity" gorm:"type:varchar(50)"`
+	WeightLimit     int        `json:"weight_limit"`
+	BatteryCapacity int        `json:"battery_capacity" gorm:"type:varchar(3)"`
 }
 
 func (dm *droneModel) Scan(value interface{}) error {

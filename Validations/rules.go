@@ -16,8 +16,8 @@ func RequiredRule() validation.Rule {
 	return validation.Required.Error(gotrans.T("required"))
 }
 
-func MinMaxRule() validation.Rule {
-	return validation.Length(3, 50).Error(gotrans.T("min_max"))
+func MaxCharacter(maxCharNo int) validation.Rule {
+	return validation.Length(0, maxCharNo).Error(gotrans.T("max_character"))
 }
 
 func Email() validation.Rule {
@@ -25,5 +25,13 @@ func Email() validation.Rule {
 }
 
 func NumericValue() validation.Rule {
-	return validation.Match(regexp.MustCompile("^[0-9]{5}$")).Error(gotrans.T("numeric"))
+	return validation.Match(regexp.MustCompile("^[0-9]")).Error(gotrans.T("numeric"))
+}
+
+func EnumValues(key string, values ...interface{}) validation.Rule {
+	return validation.In(values...).Error(gotrans.T(key))
+}
+
+func MaxValue(value int) validation.Rule {
+	return validation.Max(value).Error(gotrans.T("max_value"))
 }

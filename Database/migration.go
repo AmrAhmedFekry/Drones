@@ -8,5 +8,5 @@ import (
 
 // Set your auto migrating model here
 func Migrate(DB *gorm.DB) {
-	DB.AutoMigrate(&Models.Drone{})
+	DB.AutoMigrate(&Models.Drone{}, &Models.Medication{})
 }
