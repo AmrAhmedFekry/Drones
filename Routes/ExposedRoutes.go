@@ -3,6 +3,7 @@ package Routes
 import (
 	DroneController "GoGin/Controllers/Drone"
 	FileController "GoGin/Controllers/File"
+	LoadingMedicationController "GoGin/Controllers/Loading"
 	MedicationController "GoGin/Controllers/Medication"
 )
 
@@ -19,4 +20,9 @@ func (app RouterApp) MedicationRoutes() {
 func (app RouterApp) MediaRoutes() {
 	app.Gin.POST("/api/upload", FileController.FileUpload)
 	app.Gin.GET(":file", FileController.ShowFile)
+}
+
+func (app RouterApp) LoadingRoutes() {
+	app.Gin.POST("/api/load", LoadingMedicationController.LoadMedications)
+	app.Gin.PUT("/api/change_drone_load_state", LoadingMedicationController.ChangeDroneLoadState)
 }

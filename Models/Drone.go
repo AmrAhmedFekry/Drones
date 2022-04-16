@@ -6,15 +6,15 @@ import (
 	"gorm.io/gorm"
 )
 
-type droneState string
+type DroneState string
 
 const (
-	IDLE       droneState = "IDLE"
-	LOADING    droneState = "LOADING"
-	LOADED     droneState = "LOADED"
-	DELIVERING droneState = "DELIVERING"
-	DELIVERED  droneState = "DELIVERED"
-	RETURNING  droneState = "RETURNING"
+	IDLE       DroneState = "IDLE"
+	LOADING    DroneState = "LOADING"
+	LOADED     DroneState = "LOADED"
+	DELIVERING DroneState = "DELIVERING"
+	DELIVERED  DroneState = "DELIVERED"
+	RETURNING  DroneState = "RETURNING"
 )
 
 type droneModel string
@@ -30,7 +30,7 @@ type Drone struct {
 	gorm.Model
 	SerialNumber    string     `json:"serial_number" gorm:"type:varchar(100) not null;unique"`
 	DroneModel      droneModel `json:"model" sql:"drone_model"`
-	DroneState      droneState `json:"state" sql:"droneState"`
+	DroneState      DroneState `json:"state" sql:"droneState"`
 	WeightLimit     int        `json:"weight_limit"`
 	BatteryCapacity int        `json:"battery_capacity" gorm:"type:varchar(3)"`
 	DroneLoad       []DroneLoad
@@ -45,11 +45,11 @@ func (dm droneModel) Value() (driver.Value, error) {
 	return string(dm), nil
 }
 
-func (ds *droneState) Scan(value interface{}) error {
-	*ds = droneState(value.([]byte))
+func (ds *DroneState) Scan(value interface{}) error {
+	*ds = DroneState(value.([]byte))
 	return nil
 }
 
-func (ds droneState) Value() (driver.Value, error) {
+func (ds DroneState) Value() (driver.Value, error) {
 	return string(ds), nil
 }

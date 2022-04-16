@@ -4,6 +4,6 @@ import "gorm.io/gorm"
 
 type DroneLoadLogs struct {
 	gorm.Model
-	DroneLoadId uint   `json:"drone_load_id"`
-	DroneState  string `json:"drone_state"`
+	DroneLoadId uint       `json:"drone_load_id"`
+	DroneState  DroneState `json:"drone_state"`
 }

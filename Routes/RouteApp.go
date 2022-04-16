@@ -11,4 +11,5 @@ func (app RouterApp) Routing() {
 	app.DroneRoutes()
 	app.MedicationRoutes()
 	app.MediaRoutes()
+	app.LoadingRoutes()
 }
