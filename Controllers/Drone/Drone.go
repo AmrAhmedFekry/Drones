@@ -38,5 +38,23 @@ func RegisterDrone(c *gin.Context) {
 
 // List with all available drones for loading
 func ListOfAvailableDronesForLoading(c *gin.Context) {
+	r := Application.NewRequest(c)
 
+	var drones []Models.Drone
+	r.DB.Where("drone_state = ? AND battery_capacity >= ?", "IDLE", 25).Find(&drones)
+	r.Success(Resources.DronesResource(drones))
+
+}
+
+// Show Drone battery capacity
+func ShoWDroneBatteryCapacity(c *gin.Context) {
+	r := Application.NewRequest(c)
+	droneId := c.Params.ByName("droneId")
+
+	var drone []Models.Drone
+	if err := r.DB.Where("id = ?", droneId).First(&drone).Error; err != nil {
+		r.ResourceNotFound("drone")
+		return
+	}
+	r.Success(drone[0].BatteryCapacity)
 }

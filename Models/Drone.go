@@ -33,6 +33,7 @@ type Drone struct {
 	DroneState      droneState `json:"state" sql:"droneState"`
 	WeightLimit     int        `json:"weight_limit"`
 	BatteryCapacity int        `json:"battery_capacity" gorm:"type:varchar(3)"`
+	DroneLoad       []DroneLoad
 }
 
 func (dm *droneModel) Scan(value interface{}) error {
