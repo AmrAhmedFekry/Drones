@@ -135,7 +135,7 @@ __*Response code : 201*__
             "id": "Int"
         }
     ]
-}} 
+}
 ```
 
 
@@ -147,7 +147,7 @@ __*Response code : 201*__
     "errors": null,
     "message": "Success",
     "payload": 100
-}}}
+}
 ```
 
 # <a name="ChangeDroneLoadRequest"> </a> Change Drone Load Request 
@@ -156,8 +156,7 @@ __*Response code : 201*__
 {
     "drone_load_id" : 24,
     "drone_load_state" : "LOADED"
-}}} 
-
+} 
 ```
 # <a name="ChangeDroneLoadResponse"> </a> Change Drone Load Response 
 
@@ -167,5 +166,4 @@ __*Response code : 201*__
     "errors": null,
     "message": "Success",
     "payload": "Drone Load State Changed"
-}}} 
-
+} 
