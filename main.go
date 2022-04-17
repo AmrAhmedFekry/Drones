@@ -8,7 +8,6 @@ import (
 func main() {
 	// Initialize the application with all required dependencies and configurations and run the application
 	app := Application.NewApp()
-
 	// migrate models
 	app.Migrate()
 	// Seed data

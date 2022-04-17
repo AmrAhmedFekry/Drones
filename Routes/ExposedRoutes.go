@@ -12,6 +12,8 @@ func (app RouterApp) DroneRoutes() {
 	app.Gin.POST("/api/drone/register", DroneController.RegisterDrone)
 	app.Gin.GET("/api/available/loading/drones", DroneController.ListOfAvailableDronesForLoading)
 	app.Gin.GET("/api/drone/battery_level/:droneId", DroneController.ShoWDroneBatteryCapacity)
+	app.Gin.GET("/api/drone/loads/:droneId", DroneController.DroneWithDroneLoads)
+
 }
 
 func (app RouterApp) MedicationRoutes() {

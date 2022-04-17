@@ -20,8 +20,10 @@ type LoadMedicationRequest struct {
 type ChangeDroneLoadStateRequest struct {
 	DroneLoadId    int               `json:"drone_load_id"`
 	DroneLoadState Models.DroneState `json:"drone_load_state"`
+	DroneBattery   int               `json:"drone_battery"`
 }
 
+// Change drone load state
 func ChangeDroneLoadState(c *gin.Context) {
 	r := Application.NewRequest(c)
 	var requestData ChangeDroneLoadStateRequest
@@ -44,17 +46,20 @@ func ChangeDroneLoadState(c *gin.Context) {
 		return
 	}
 	drone.DroneState = requestData.DroneLoadState
+	drone.BatteryCapacity = requestData.DroneBattery
 	r.DB.Save(&drone)
 
 	// Create drone load logs
 	var droneLoadLogs Models.DroneLoadLogs
 	droneLoadLogs.DroneLoadId = droneLoad.ID
 	droneLoadLogs.DroneState = requestData.DroneLoadState
+	droneLoadLogs.DroneBatteryCapacity = drone.BatteryCapacity
 	r.DB.Create(&droneLoadLogs)
 
 	r.Success("Drone Load State Changed")
 }
 
+// Load medication request data
 func LoadMedications(c *gin.Context) {
 	r := Application.NewRequest(c)
 	var requestData LoadMedicationRequest
@@ -118,6 +123,7 @@ func LoadMedications(c *gin.Context) {
 	var droneLoadLogs Models.DroneLoadLogs
 	droneLoadLogs.DroneLoadId = droneLoad.ID
 	droneLoadLogs.DroneState = "LOADING"
+	droneLoadLogs.DroneBatteryCapacity = drone.BatteryCapacity
 	r.DB.Create(&droneLoadLogs)
 	r.Success(medications)
 }

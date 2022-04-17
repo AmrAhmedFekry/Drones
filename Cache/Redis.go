@@ -28,13 +28,9 @@ func ConnectRedis() *Redis {
 
 // Set Specific key and value to redis
 func SetToRedis(key string, value interface{}, ttl int) {
-	// Convert interface to json
-	valueToCache, err := json.Marshal(value)
-	if err != nil {
-		panic(err)
-	}
+	cachedValue, _ := json.Marshal(value)
 	// Set the key with expiry time
-	errInSet := ConnectRedis().client.Set(ctx, key, valueToCache, time.Duration(ttl)*time.Second)
+	errInSet := ConnectRedis().client.Set(ctx, key, cachedValue, time.Duration(ttl)*time.Second).Err()
 	if errInSet != nil {
 		panic(errInSet)
 	}
@@ -44,9 +40,9 @@ func SetToRedis(key string, value interface{}, ttl int) {
 func GetFromRedis(key string) interface{} {
 	val, err := ConnectRedis().client.Get(ctx, key).Result()
 	if err != nil {
-		panic(err)
+		panic(err.Error())
 	}
-	var unMarshalValue interface{}
-	json.Unmarshal([]byte(val), &unMarshalValue)
-	return unMarshalValue
+	var result interface{}
+	json.Unmarshal([]byte(val), &result)
+	return result
 }
