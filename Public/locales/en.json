@@ -16,5 +16,7 @@
     "product_quantity_is_not_enough" : "Product quantity is not enough",
     "user_deposit_is_not_enough" : "User Deposit is not enough", 
     "max_value" : "This field must be less than or equal to 500", 
-    "serial_number_already_exist" : "Serial number already exist"
+    "serial_number_already_exist" : "Serial number already exist",
+    "medication_name" : "Medication name (allowed only letters, numbers, -, _)",
+    "medication_code" : "Medication code (allowed only upper case letters, underscore and numbers)"
 }

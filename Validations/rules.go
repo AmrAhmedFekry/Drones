@@ -35,3 +35,7 @@ func EnumValues(key string, values ...interface{}) validation.Rule {
 func MaxValue(value int) validation.Rule {
 	return validation.Max(value).Error(gotrans.T("max_value"))
 }
+
+func MatchRegex(regex string, inputName string) validation.Rule {
+	return validation.Match(regexp.MustCompile(regex)).Error(gotrans.T(inputName))
+}

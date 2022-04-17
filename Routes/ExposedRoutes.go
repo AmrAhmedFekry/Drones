@@ -7,6 +7,7 @@ import (
 	MedicationController "GoGin/Controllers/Medication"
 )
 
+// Available Routes for drones
 func (app RouterApp) DroneRoutes() {
 	app.Gin.POST("/api/drone/register", DroneController.RegisterDrone)
 	app.Gin.GET("/api/available/loading/drones", DroneController.ListOfAvailableDronesForLoading)

@@ -14,12 +14,12 @@ import (
 func RegisterDrone(c *gin.Context) {
 	r := Application.NewRequest(c)
 
-	// Binding Request Body to drone Model
 	var drone Models.Drone
 	// Set Initial value.
 	drone.BatteryCapacity = 100
 	drone.DroneState = "IDLE"
 
+	// Binding Request Body to drone Model
 	r.Context.ShouldBindJSON(&drone)
 
 	// Validate if serial number is unique
