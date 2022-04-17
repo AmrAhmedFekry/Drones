@@ -17,7 +17,7 @@ As Shown in diagram we have collapse the medications items in drone_load that ga
 # Setting API DOCS
 
 # Base URL
-http://localhost:8080
+http://localhost:8080/api
 
 # Other resources 
 
@@ -30,22 +30,17 @@ Accept : application/json
 
 # API 
 
-| Route                        | Request Method | Parameters | Response  |
-| -----------                  | -----------    |----------- |---------- |
-| /api/drone/register          | POST           |  [Register Parameters](#RegisterDrone)|[Response](#Response)|
-|/api/medication               |POST           |  [Register Parameters](#RegisterMedication)|[Response](#Response)     |
-| /api/load          | POST           |  [Load Parameters](#LoadDrone)|[Response](#Response)|
+| Route                           | Request Method | Parameters                                           | Response  |
+| -----------                     | -----------    |-----------                                           |---------- |
+|/drone/register                  | POST           |  [Register Drone Parameters](#RegisterDroneRequest)        |[Response](#Response)|
+|/medication                      |POST            |  [Register Medication Parameters](#RegisterMedication)          |[Response](#Response) |
+|/load                        | POST           |  [Load Parameters](#RegisterMedicationRequest)       |[Response](#Response)|
+|/upload                      | POST           |  [Upload Parameters](#UploadMediaRequest)            |[Response](#UploadResponse)|
+|/available/loading/drones       | GET            | [-]                                                  |[Response](#AvailableResponse)|
+|/drone/battery_level/{droneId}  | GET            | [-]                                                 ||[Response](#showBatteryResponse)|
+|/change_drone_load_state        | PUT            |[Change State](#ChangeDroneLoadRequest)         |  |[Response](#ChangeDroneLoadResponse)|
 
-| /api/upload          | POST           |  [Upload Parameters](#UploadMedia)|[Response](#UploadResponse)|
-
-| /available/loading/drones          | GET  |  [-](#AvailableResponse)|[Response](#AvailableResponse)|
-
-
-| /drone/battery_level/{droneId}          | GET  |  [-](#showBatteryResponse)|[Response](#showBatteryResponse)|
-
-| /change_drone_load_state          | PUT  |  [-](#ChangeDroneLoadRequest)|[Response](#ChangeDroneLoadResponse)|
-
-# <a name="UploadMedia"> </a> Upload Media 
+# <a name="UploadMediaRequest"> </a> Upload Media Request
 
 ```json
 {
@@ -54,7 +49,7 @@ Accept : application/json
 ```
 
 
-# <a name="UploadResponse"> </a> Upload Media 
+# <a name="UploadResponse"> </a> Upload Media Response
 
 ```json
 {
@@ -65,9 +60,7 @@ Accept : application/json
 ```
 
 
-
-
-# <a name="RegisterDrone"> </a> Register new Drone 
+# <a name="RegisterDroneRequest"> </a> Register new Drone 
 
 ```json
 {
@@ -77,7 +70,7 @@ Accept : application/json
 } 
 ```
 
-# <a name="LoadDrone"> </a> Load Drone with medications 
+# <a name="LoadDroneRequest"> </a> Load Drone with medications 
 
 ```json
 {
@@ -89,7 +82,7 @@ Accept : application/json
 ```
 
 
-# <a name="RegisterMedication"> </a> Register Medication
+# <a name="RegisterMedicationRequest"> </a> Register new Medication
 
 ```json
 {
