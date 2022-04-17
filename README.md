@@ -1,20 +1,10 @@
 This solution based on my basic MVC file structure [Sakara](https://github.com/AmrAhmedFekry/Sakara).
 
-
 # System Design  
 
 ![ER Diagram](ER.png)
 
 As Shown in diagram we have collapse the medications items in drone_load that gave us the ability to track the load, and make logs for it.
-
-
-
-# API DOCS
-
-
-
-
-# Setting API DOCS
 
 # Base URL
 http://localhost:8080/api
