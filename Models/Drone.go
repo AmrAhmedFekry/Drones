@@ -6,6 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
+// Define Drone state available enum values
 type DroneState string
 
 const (
@@ -17,6 +18,7 @@ const (
 	RETURNING  DroneState = "RETURNING"
 )
 
+// Define Drone model available enum values
 type droneModel string
 
 const (
@@ -28,12 +30,13 @@ const (
 
 type Drone struct {
 	gorm.Model
-	SerialNumber    string     `json:"serial_number" gorm:"type:varchar(100) not null;unique"`
-	DroneModel      droneModel `json:"model" sql:"drone_model"`
-	DroneState      DroneState `json:"state" sql:"droneState"`
-	WeightLimit     int        `json:"weight_limit"`
-	BatteryCapacity int        `json:"battery_capacity" gorm:"type:varchar(3)"`
-	DroneLoad       []DroneLoad
+	SerialNumber     string     `json:"serial_number" gorm:"type:varchar(100) not null;unique"`
+	DroneModel       droneModel `json:"model" sql:"drone_model"`
+	DroneState       DroneState `json:"state" sql:"droneState"`
+	WeightLimit      int        `json:"weight_limit"`
+	BatteryCapacity  int        `json:"battery_capacity" gorm:"type:varchar(3)"`
+	DroneBatteryLogs []DroneBatteryLogs
+	DroneLoad        []DroneLoad
 }
 
 func (dm *droneModel) Scan(value interface{}) error {

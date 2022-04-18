@@ -3,6 +3,7 @@ package Application
 import (
 	"database/sql"
 	"fmt"
+	"os"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -10,10 +11,9 @@ import (
 
 // Create new connection
 func makeConnection() *gorm.DB {
-	dsn := "root:@tcp(127.0.0.1:3306)/musala?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := os.Getenv("DATABASE_USER_NAME") + os.Getenv("DATABASE_PASSWORD") + ":@tcp(127.0.0.1:" + os.Getenv("DATABASE_PORT") + ")/" + os.Getenv("DATABASE_NAME") + "?charset=utf8mb4&parseTime=True&loc=Local"
+
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	// dsn := os.Getenv("DATABASE_USER_NAME") + ":" + os.Getenv("DATABASE_PASSWORD") + "@tcp(" + os.Getenv("DATABASE_HOST") + ":" + os.Getenv("DATABASE_PORT") + ")/" + os.Getenv("DATABASE_NAME") + "?charset=utf8mb4&parseTime=True&loc=Local"
-	// db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		fmt.Print("Error in connecting to database")
 	}

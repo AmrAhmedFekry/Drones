@@ -64,7 +64,7 @@ func DroneWithDroneLoads(c *gin.Context) {
 	r := Application.NewRequest(c)
 	droneId := c.Params.ByName("droneId")
 
-	var drone []Models.Drone
+	var drone Models.Drone
 	if err := r.DB.Where("id = ?", droneId).Preload("DroneLoad").First(&drone).Error; err != nil {
 		r.ResourceNotFound("drone")
 		return
