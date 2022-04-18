@@ -171,6 +171,6 @@ __*Response code : 201*__
 
 # Periodic Task
 
-There a schedule task run every 10mis to record the drone battery state into table using chrono package.
+There is a schedule task run every 10mis to record the drone battery state into table using chrono package.
 [Chrono](https://github.com/procyon-projects/chrono).
 
