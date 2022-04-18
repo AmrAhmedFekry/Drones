@@ -167,3 +167,10 @@ __*Response code : 201*__
     "message": "Success",
     "payload": "Drone Load State Changed"
 } 
+```
+
+# Periodic Task
+
+There a schedule task run every 10mis to record the drone battery state into table using chrono package.
+[Chrono](https://github.com/procyon-projects/chrono).
+
